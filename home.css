@@ -1,0 +1,241 @@
+/* ===== GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5; /* whitesmoke background */
+    color: #333;
+}
+
+/* ===== LOGOUT BUTTON ===== */
+.logout-btn-container {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+
+.logout-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+    background-color: #e60000;
+    transform: scale(1.05);
+}
+
+/* ===== HEADER ===== */
+.title-navbar {
+    background: #f5f5f5; /* changed from white to whitesmoke */
+    padding: 25px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.title-navbar h1 {
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: #2c3e50;
+}
+
+/* ===== NAVBAR ===== */
+.button-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #f5f5f5; /* changed from white to whitesmoke */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background-color: #ffffff; /* keep buttons white for contrast */
+    color: #333;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* ===== PROFILE SECTION ===== */
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile-picture {
+    width: 40px;
+    height: 40px;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #007bff;
+}
+
+.username {
+    font-weight: 500;
+    color: #555;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+    padding: 40px;
+}
+
+.container h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+/* ===== DASHBOARD CARDS ===== */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #ffffff; /* keep card white for contrast */
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+.card p {
+    font-size: 26px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* ===== JOB FORM ===== */
+.job-form {
+    display: grid;
+    gap: 15px;
+    max-width: 600px;
+}
+
+.job-form input,
+.job-form textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.3s ease;
+    background-color: #ffffff; /* white form fields for contrast */
+}
+
+.job-form input:focus,
+.job-form textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.2);
+}
+
+.submit-btn {
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .button-navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logout-btn-container {
+        right: 15px;
+    }
+}
+
+/* Center the post job section */
+#postJobSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Horizontal centering */
+    justify-content: center; /* Vertical centering within its container if needed */
+    text-align: center; /* Center text inside */
+    margin-top: 40px; /* Keep your existing spacing */
+}
+
+/* Style the form to make it centered and neat */
+.job-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 500px; /* Limits the width on large screens */
+    gap: 15px; /* Space between input fields */
+    margin: 0 auto; /* Centers the form */
+}
+
+.job-form input,
+.job-form textarea,
+.job-form button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.submit-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3;
+}
