@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Posted Jobs</title>
+<style>
+/* ---------- LOGOUT BUTTON ---------- */
+.logout-btn-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+}
+.logout-btn {
+    padding: 6px 12px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.logout-btn:hover { background-color: #c82333; }
+
+/* ---------- HEADER & NAVBAR ---------- */
+.title-navbar {
+    text-align: center;
+    background: linear-gradient(90deg, #4e73df, #1cc88a);
+    color: white;
+    padding: 20px 10px;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.button-navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+    margin-top: 50px;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 15px;
+}
+.nav-buttons a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* ---------- PROFILE ---------- */
+.profile-container {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
+}
+
+/* ---------- JOB CARDS ---------- */
+.job-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background-color: white;
+}
+
+/* ---------- BUTTONS ---------- */
+.job-card-actions button {
+    margin-top: 5px;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: 0.3s;
+    color: white;
+}
+.apply-btn { background-color: #28a745; }
+.apply-btn:hover { background-color: #218838; }
+</style>
+</head>
+<body>
+
+<div class="logout-btn-container">
+    <button class="logout-btn" onclick="logout()">Logout</button>
+</div>
+
+<header class="title-navbar">
+    <h1>ALL POSTED JOBS</h1>
+</header>
+
+<nav class="button-navbar">
+    <div class="nav-buttons">
+        <a href="home.html" class="nav-btn">Home</a>
+        <a href="post_job.html" class="nav-btn">Your Profile</a>
+    </div>
+    <div class="profile-container" id="profileContainer"></div>
+</nav>
+
+<main class="container">
+    <h2>All Jobs Posted by Users</h2>
+    <section id="allJobsSection"></section>
+</main>
+
+<script>
+// ---------- LOGOUT ----------
+function logout() {
+    localStorage.removeItem("currentUser");
+    alert("You have been logged out.");
+    window.location.href = 'log_in.html';
+}
+
+// ---------- PROFILE ----------
+const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
+const profileContainer = document.getElementById("profileContainer");
+if (currentUser.username) {
+    profileContainer.innerHTML = `
+        <img src="${currentUser.profilePic || 'default-profile.png'}" alt="Profile" class="profile-img">
+        <span>${currentUser.username}</span>
+    `;
+}
+
+// ---------- LOAD ALL JOBS ----------
+const allJobsSection = document.getElementById("allJobsSection");
+const jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+
+if (jobs.length === 0) {
+    allJobsSection.innerHTML = "<p>No jobs have been posted yet.</p>";
+} else {
+    jobs.forEach((job, index) => {
+        const jobCard = document.createElement("div");
+        jobCard.classList.add("job-card");
+
+        jobCard.innerHTML = `
+            <h3>${job.title}</h3>
+            <p><strong>Company:</strong> ${job.company}</p>
+            <p><strong>Location:</strong> ${job.location}</p>
+            <p><strong>Salary:</strong> ${job.salary || 'Not Specified'}</p>
+            <p><strong>Description:</strong> ${job.description || 'No description available'}</p>
+            <p><strong>Posted By:</strong> ${job.postedBy}</p>
+            <p><strong>Job Link:</strong> <a href="${job.link || '#'}" target="_blank">${job.link || 'N/A'}</a></p>
+            <div class="job-card-actions">
+                <button class="apply-btn" onclick="applyJob(${index})">Apply</button>
+            </div>
+        `;
+        allJobsSection.appendChild(jobCard);
+    });
+}
+
+// ---------- APPLY JOB ----------
+function applyJob(jobIndex) {
+    localStorage.setItem("applyJobIndex", jobIndex);
+    window.location.href = 'resume_form.html';
+}
+</script>
+</body>
+</html>

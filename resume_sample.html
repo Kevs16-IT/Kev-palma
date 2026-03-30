@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Sample</title>
+<link rel="stylesheet" href="resume_form.css">
+<style>
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+}
+
+/* Top title */
+.header-top {
+    text-align: center;
+    background: linear-gradient(90deg, #4e73df, #1cc88a);
+    color: white;
+    padding: 20px 10px;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 10;
+}
+
+/* Navbar links */
+.navbar .nav-link {
+    margin-right: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+.navbar .nav-link:hover {
+    color: #1cc88a;
+}
+
+/* Logout button at top-right */
+.logout-btn {
+    position: absolute;
+    right: 20px;
+    top: 60px; /* below title */
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+.logout-btn:hover {
+    background-color: #c82333;
+}
+
+/* Resume Container */
+.resume-container {
+    margin: 140px auto 40px; /* space for title/navbar */
+    max-width: 900px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Profile picture */
+.profile-pic-wrapper img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Header info inputs */
+.header-info input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+}
+
+/* Section titles */
+.section h2 {
+    margin-bottom: 8px;
+    color: #4e73df;
+}
+
+/* Section textareas */
+.section textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    resize: none;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+}
+</style>
+</head>
+<body>
+
+<!-- Top title -->
+<div class="header-top">
+    ONLINE JOB PORTAL
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="view_all_jobs.html" class="nav-link">View All Jobs</a>
+</div>
+
+<!-- Log Out button -->
+<button class="logout-btn" onclick="logout()">Log Out</button>
+
+<!-- Resume Sample Container -->
+<div class="resume-container">
+
+    <!-- Header Section -->
+    <div class="resume-header" style="display:flex; gap:20px; align-items:center;">
+        <div class="profile-pic-wrapper">
+            <img id="profilePreview" src="https://via.placeholder.com/120" alt="Profile Picture">
+        </div>
+        <div class="header-info">
+            <input type="text" id="name" value="Kevin James A. Palma" readonly>
+            <input type="text" id="address" value="San Francisco Dist, P.L Urro St. Coner Roxas. Pagadian City" readonly>
+            <input type="text" id="cell" value="09876543210" readonly>
+            <input type="email" id="email" value="kevs03@gmail.com" readonly>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Objectives -->
+    <div class="section">
+        <h2>Objectives</h2>
+        <textarea id="objectives" rows="3" readonly>To secure a challenging position in a reputable organization where I can utilize my IT and web development skills while contributing to the company's growth.</textarea>
+    </div>
+
+    <!-- Personal Information -->
+    <div class="section">
+        <h2>Personal Information</h2>
+        <div class="personal-info-grid" style="display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;">
+            <input type="date" id="birthdate" value="2026-01-01" readonly>
+            <input type="number" id="age" value="15" readonly>
+            <input type="text" id="birthplace" value="Pagadian city" readonly>
+            <input type="text" id="sex" value="Male" readonly>
+            <input type="text" id="status" value="Single" readonly>
+            <input type="text" id="height" value="5'3" readonly>
+            <input type="text" id="weight" value="70 kg" readonly>
+            <input type="text" id="religion" value="Roman Catholic" readonly>
+            <input type="text" id="nationality" value="Filipino" readonly>
+        </div>
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+        <h2>Educational Attainment</h2>
+        <textarea id="education" rows="3" readonly>Bachelor of Science in Information Technology, West Prime Horizon Institute, INC.</textarea>
+    </div>
+
+    <!-- Skills -->
+    <div class="section">
+        <h2>Skills</h2>
+        <textarea id="skills" rows="3" readonly>HTML, CSS, JavaScript, PHP, MySQL, Microsoft Word, Excel, PowerPoint</textarea>
+    </div>
+
+    <!-- Achievements -->
+    <div class="section">
+        <h2>Achievements / Community Involvement</h2>
+        <textarea id="achievements" rows="3" readonly>Volunteer for local community events, Outstanding Student Award 2025, IT Club President 2016</textarea>
+    </div>
+
+</div>
+
+<script>
+// Logout function
+function logout() {
+    localStorage.removeItem("currentUser");
+    alert("You have been logged out.");
+    location.href = "log_in.html";
+}
+
+// Hamburger Menu Toggle (if needed)
+const hamburgerBtn = document.querySelector('.hamburger-btn');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+if(hamburgerBtn){
+    hamburgerBtn.addEventListener('click', () => {
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
+}
+</script>
+
+</body>
+</html>
